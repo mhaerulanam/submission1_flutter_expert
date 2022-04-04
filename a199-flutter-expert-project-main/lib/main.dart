@@ -3,15 +3,20 @@ import 'package:ditonton/common/utils.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
+import 'package:ditonton/presentation/pages/on_the_air_tv_series_page.dart';
 import 'package:ditonton/presentation/pages/popular_movies_page.dart';
+import 'package:ditonton/presentation/pages/popular_tv_series_page.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_movies_page.dart';
+import 'package:ditonton/presentation/pages/top_rated_tv_series_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
+import 'package:ditonton/presentation/provider/popular_tv_series_notifier.dart';
 import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
+import 'package:ditonton/presentation/provider/top_rated_tv_series_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_series_list_notifier.dart';
 import 'package:ditonton/presentation/provider/watchlist_movie_notifier.dart';
 import 'package:flutter/cupertino.dart';
@@ -50,6 +55,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<TvSeriesListNotifier>(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<PopularTvSeriesNotifier>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<TopRatedTvSeriesNotifier>(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -81,6 +92,12 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
             case AboutPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => AboutPage());
+            case PopularTvSeriesPage.ROUTE_NAME:
+              return CupertinoPageRoute(builder: (_) => PopularTvSeriesPage());
+            case OnTheAirTvSeriesPage.ROUTE_NAME:
+              return CupertinoPageRoute(builder: (_) => OnTheAirTvSeriesPage());
+            case TopRatedTvSeriesPage.ROUTE_NAME:
+              return CupertinoPageRoute(builder: (_) => TopRatedTvSeriesPage());
             default:
               return MaterialPageRoute(builder: (_) {
                 return Scaffold(

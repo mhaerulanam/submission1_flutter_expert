@@ -5,14 +5,19 @@ import 'package:ditonton/domain/entities/tv_series.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:ditonton/presentation/pages/popular_movies_page.dart';
+import 'package:ditonton/presentation/pages/popular_tv_series_page.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_movies_page.dart';
+import 'package:ditonton/presentation/pages/top_rated_tv_series_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:ditonton/common/state_enum.dart';
+import 'package:ditonton/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/tv_series_list_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'on_the_air_tv_series_page.dart';
 
 class HomeMoviePage extends StatefulWidget {
   @override
@@ -24,10 +29,16 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
   void initState() {
     super.initState();
     Future.microtask(
-        () => Provider.of<MovieListNotifier>(context, listen: false)
-          ..fetchNowPlayingMovies()
-          ..fetchPopularMovies()
-          ..fetchTopRatedMovies());
+        () {
+          Provider.of<MovieListNotifier>(context, listen: false)
+            ..fetchNowPlayingMovies()
+            ..fetchPopularMovies()
+            ..fetchTopRatedMovies();
+          Provider.of<TvSeriesListNotifier>(context, listen: false)
+            ..fetchTvOnTheAir()
+            ..fetchPopularTvSeries()
+            ..fetchTopRatedTvSeries();
+        });
   }
 
   @override
@@ -84,9 +95,10 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Tv On The Air',
-                style: kHeading6,
+              _buildSubHeading(
+                title: 'Tv Series Is Airing',
+                onTap: () =>
+                    Navigator.pushNamed(context, OnTheAirTvSeriesPage.ROUTE_NAME),
               ),
               Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
                 final state = data.tvOnTheAirState;
@@ -96,6 +108,40 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                   );
                 } else if (state == RequestState.Loaded) {
                   return TvSeriesList(data.tvOnTheAir);
+                } else {
+                  return Text('Failed');
+                }
+              }),
+              _buildSubHeading(
+                title: 'Popular Tv Series',
+                onTap: () =>
+                    Navigator.pushNamed(context, PopularTvSeriesPage.ROUTE_NAME),
+              ),
+              Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
+                final state = data.popularTvSeriesState;
+                if (state == RequestState.Loading) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state == RequestState.Loaded) {
+                  return TvSeriesList(data.popularTvSeries);
+                } else {
+                  return Text('Failed');
+                }
+              }),
+              _buildSubHeading(
+                title: 'Top Rated Tv Series',
+                onTap: () =>
+                    Navigator.pushNamed(context, TopRatedTvSeriesPage.ROUTE_NAME),
+              ),
+              Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
+                final state = data.topRatedTvSeriesState;
+                if (state == RequestState.Loading) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state == RequestState.Loaded) {
+                  return TvSeriesList(data.topRatedTvSeries);
                 } else {
                   return Text('Failed');
                 }
