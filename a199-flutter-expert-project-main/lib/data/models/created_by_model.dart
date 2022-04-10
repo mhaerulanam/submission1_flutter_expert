@@ -1,10 +1,9 @@
-
 import 'package:ditonton/data/models/tv_series_detail_model.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../domain/entities/create_by.dart';
 
-class CreatedByModel extends Equatable{
+class CreatedByModel extends Equatable {
   CreatedByModel({
     required this.id,
     required this.creditId,
@@ -20,20 +19,20 @@ class CreatedByModel extends Equatable{
   dynamic profilePath;
 
   factory CreatedByModel.fromJson(Map<String, dynamic> json) => CreatedByModel(
-    id: json["id"],
-    creditId: json["credit_id"],
-    name: json["name"],
-    gender: json["gender"],
-    profilePath: json["profile_path"],
-  );
+        id: json["id"],
+        creditId: json["credit_id"],
+        name: json["name"],
+        gender: json["gender"],
+        profilePath: json["profile_path"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "credit_id": creditId,
-    "name": name,
-    "gender": gender,
-    "profile_path": profilePath,
-  };
+        "id": id,
+        "credit_id": creditId,
+        "name": name,
+        "gender": gender,
+        "profile_path": profilePath,
+      };
 
   CreatedBy toEntity() {
     return CreatedBy(
@@ -41,8 +40,7 @@ class CreatedByModel extends Equatable{
         creditId: this.creditId,
         name: this.name,
         gender: this.gender,
-        profilePath: this.profilePath
-    );
+        profilePath: this.profilePath);
   }
 
   @override

@@ -62,12 +62,12 @@ class TvSeriesListNotifier extends ChangeNotifier {
 
     final result = await getPopularTvSeries.execute();
     result.fold(
-          (failure) {
+      (failure) {
         _popularTvSeriesState = RequestState.Error;
         _message = failure.message;
         notifyListeners();
       },
-          (tvSeriesData) {
+      (tvSeriesData) {
         _popularTvSeriesState = RequestState.Loaded;
         _popularTvSeries = tvSeriesData;
         notifyListeners();
@@ -81,12 +81,12 @@ class TvSeriesListNotifier extends ChangeNotifier {
 
     final result = await getTopRatedTvSeries.execute();
     result.fold(
-          (failure) {
+      (failure) {
         _topRatedTvSeriesState = RequestState.Error;
         _message = failure.message;
         notifyListeners();
       },
-          (tvSeriesData) {
+      (tvSeriesData) {
         _topRatedTvSeriesState = RequestState.Loaded;
         _topRatedTvSeries = tvSeriesData;
         notifyListeners();

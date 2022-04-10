@@ -1,7 +1,6 @@
-
 import 'package:equatable/equatable.dart';
 
-class CreatedBy extends Equatable{
+class CreatedBy extends Equatable {
   CreatedBy({
     required this.id,
     required this.creditId,

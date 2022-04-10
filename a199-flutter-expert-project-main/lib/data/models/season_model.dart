@@ -1,7 +1,7 @@
 import 'package:ditonton/domain/entities/season.dart';
 import 'package:equatable/equatable.dart';
 
-class SeasonModel extends Equatable{
+class SeasonModel extends Equatable {
   SeasonModel({
     required this.airDate,
     required this.episodeCount,
@@ -21,24 +21,25 @@ class SeasonModel extends Equatable{
   int seasonNumber;
 
   factory SeasonModel.fromJson(Map<String, dynamic> json) => SeasonModel(
-    airDate: DateTime.parse(json["air_date"]),
-    episodeCount: json["episode_count"],
-    id: json["id"],
-    name: json["name"],
-    overview: json["overview"],
-    posterPath: json["poster_path"],
-    seasonNumber: json["season_number"],
-  );
+        airDate: DateTime.parse(json["air_date"]),
+        episodeCount: json["episode_count"],
+        id: json["id"],
+        name: json["name"],
+        overview: json["overview"],
+        posterPath: json["poster_path"],
+        seasonNumber: json["season_number"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "air_date": "${airDate.year.toString().padLeft(4, '0')}-${airDate.month.toString().padLeft(2, '0')}-${airDate.day.toString().padLeft(2, '0')}",
-    "episode_count": episodeCount,
-    "id": id,
-    "name": name,
-    "overview": overview,
-    "poster_path": posterPath,
-    "season_number": seasonNumber,
-  };
+        "air_date":
+            "${airDate.year.toString().padLeft(4, '0')}-${airDate.month.toString().padLeft(2, '0')}-${airDate.day.toString().padLeft(2, '0')}",
+        "episode_count": episodeCount,
+        "id": id,
+        "name": name,
+        "overview": overview,
+        "poster_path": posterPath,
+        "season_number": seasonNumber,
+      };
 
   Season toEntity() {
     return Season(
@@ -48,11 +49,11 @@ class SeasonModel extends Equatable{
         name: this.name,
         overview: this.overview,
         posterPath: this.posterPath,
-        seasonNumber: this.seasonNumber
-    );
+        seasonNumber: this.seasonNumber);
   }
 
   @override
   // TODO: implement props
-  List<Object?> get props => [airDate, episodeCount, id, name, overview, posterPath, seasonNumber];
+  List<Object?> get props =>
+      [airDate, episodeCount, id, name, overview, posterPath, seasonNumber];
 }

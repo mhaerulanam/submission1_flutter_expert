@@ -28,17 +28,16 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-        () {
-          Provider.of<MovieListNotifier>(context, listen: false)
-            ..fetchNowPlayingMovies()
-            ..fetchPopularMovies()
-            ..fetchTopRatedMovies();
-          Provider.of<TvSeriesListNotifier>(context, listen: false)
-            ..fetchTvOnTheAir()
-            ..fetchPopularTvSeries()
-            ..fetchTopRatedTvSeries();
-        });
+    Future.microtask(() {
+      Provider.of<MovieListNotifier>(context, listen: false)
+        ..fetchNowPlayingMovies()
+        ..fetchPopularMovies()
+        ..fetchTopRatedMovies();
+      Provider.of<TvSeriesListNotifier>(context, listen: false)
+        ..fetchTvOnTheAir()
+        ..fetchPopularTvSeries()
+        ..fetchTopRatedTvSeries();
+    });
   }
 
   @override
@@ -97,8 +96,8 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
             children: [
               _buildSubHeading(
                 title: 'Tv Series Is Airing',
-                onTap: () =>
-                    Navigator.pushNamed(context, OnTheAirTvSeriesPage.ROUTE_NAME),
+                onTap: () => Navigator.pushNamed(
+                    context, OnTheAirTvSeriesPage.ROUTE_NAME),
               ),
               Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
                 final state = data.tvOnTheAirState;
@@ -114,8 +113,8 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               }),
               _buildSubHeading(
                 title: 'Popular Tv Series',
-                onTap: () =>
-                    Navigator.pushNamed(context, PopularTvSeriesPage.ROUTE_NAME),
+                onTap: () => Navigator.pushNamed(
+                    context, PopularTvSeriesPage.ROUTE_NAME),
               ),
               Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
                 final state = data.popularTvSeriesState;
@@ -131,8 +130,8 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               }),
               _buildSubHeading(
                 title: 'Top Rated Tv Series',
-                onTap: () =>
-                    Navigator.pushNamed(context, TopRatedTvSeriesPage.ROUTE_NAME),
+                onTap: () => Navigator.pushNamed(
+                    context, TopRatedTvSeriesPage.ROUTE_NAME),
               ),
               Consumer<TvSeriesListNotifier>(builder: (context, data, child) {
                 final state = data.topRatedTvSeriesState;
@@ -233,32 +232,36 @@ class TvSeriesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          final tvSeries = tv[index];
-          return Container(
-            padding: const EdgeInsets.all(8),
-            child: InkWell(
-              onTap: () {
-              },
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(16)),
-                child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${tvSeries.posterPath}',
-                  placeholder: (context, url) => Center(
-                    child: CircularProgressIndicator(),
+        height: 200,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            final tvSeries = tv[index];
+            return Container(
+              padding: const EdgeInsets.all(8),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    MovieDetailPage.ROUTE_NAME,
+                    arguments: tvSeries.id,
+                  );
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                  child: CachedNetworkImage(
+                    imageUrl: '$BASE_IMAGE_URL${tvSeries.posterPath}',
+                    placeholder: (context, url) => Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
-            ),
-          );
-        },
-        itemCount: tv.length,
-      )
-    );
+            );
+          },
+          itemCount: tv.length,
+        ));
   }
 }
 

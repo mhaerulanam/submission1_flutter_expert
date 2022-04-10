@@ -27,15 +27,15 @@ class TEpisodeToAir extends Equatable {
 
   @override
   List<Object?> get props => [
-    airDate,
-    episodeNumber,
-    id,
-    name,
-    overview,
-    productionCode,
-    seasonNumber,
-    stillPath,
-    voteAverage,
-    voteCount,
-  ];
+        airDate,
+        episodeNumber,
+        id,
+        name,
+        overview,
+        productionCode,
+        seasonNumber,
+        stillPath,
+        voteAverage,
+        voteCount,
+      ];
 }

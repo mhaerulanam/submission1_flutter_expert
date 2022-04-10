@@ -1,4 +1,3 @@
-
 import 'package:ditonton/domain/entities/tv_series.dart';
 import 'package:ditonton/domain/usecases/get_top_rated_tv_series.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,12 +25,12 @@ class TopRatedTvSeriesNotifier extends ChangeNotifier {
     final result = await getTopRatedTvSeries.execute();
 
     result.fold(
-          (failure) {
+      (failure) {
         _message = failure.message;
         _state = RequestState.Error;
         notifyListeners();
       },
-          (tvSeriesData) {
+      (tvSeriesData) {
         _tvSeries = tvSeriesData;
         _state = RequestState.Loaded;
         notifyListeners();

@@ -10,8 +10,5 @@ class ProductionCountry extends Equatable {
   final String name;
 
   @override
-  List<Object?> get props => [
-    iso31661,
-    name
-  ];
+  List<Object?> get props => [iso31661, name];
 }

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Network extends Equatable{
+class Network extends Equatable {
   Network({
     required this.name,
     required this.id,
@@ -15,9 +15,9 @@ class Network extends Equatable{
 
   @override
   List<Object?> get props => [
-    name,
-    id,
-    logoPath,
-    originCountry,
-  ];
+        name,
+        id,
+        logoPath,
+        originCountry,
+      ];
 }
