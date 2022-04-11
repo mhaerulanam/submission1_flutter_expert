@@ -102,7 +102,7 @@ class DetailContent extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              movie.title,
+                              movie.title!,
                               style: kHeading5,
                             ),
                             ElevatedButton(
@@ -178,7 +178,7 @@ class DetailContent extends StatelessWidget {
                               style: kHeading6,
                             ),
                             Text(
-                              movie.overview,
+                              movie.overview!,
                             ),
                             SizedBox(height: 16),
                             Text(
