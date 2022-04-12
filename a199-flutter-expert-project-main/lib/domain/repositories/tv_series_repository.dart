@@ -3,6 +3,8 @@ import 'package:ditonton/common/failure.dart';
 import 'package:ditonton/domain/entities/tv_series.dart';
 import 'package:ditonton/domain/entities/tv_series_detail.dart';
 
+import '../../data/models/episode_response.dart';
+
 abstract class TvSeriesRepository {
   Future<Either<Failure, List<TvSeries>>> getTvOnTheAir();
   Future<Either<Failure, List<TvSeries>>> getPopularTvSeries();
@@ -13,4 +15,6 @@ abstract class TvSeriesRepository {
   Future<Either<Failure, String>> removeWatchlistTvSeries(DetailTvSeries movie);
   Future<bool> isAddedToWatchlistTvSeries(int id);
   Future<Either<Failure, List<TvSeries>>> getWatchlistTvSeries();
+  Future<Either<Failure, List<Episode>>> getTvEpisode(int idTv, int idEpisode);
+  Future<Either<Failure, List<TvSeries>>> searchTv(String query);
 }

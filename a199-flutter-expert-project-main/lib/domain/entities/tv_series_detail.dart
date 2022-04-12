@@ -1,13 +1,13 @@
 import 'package:ditonton/data/models/production_country_model.dart';
-import 'package:ditonton/data/models/season_model.dart';
 import 'package:ditonton/data/models/spoken_language_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../../data/models/created_by_model.dart';
-import '../../data/models/episode_to_air_model.dart';
-import '../../data/models/genre_model.dart';
-import '../../data/models/network_model.dart';
+import '../../data/models/tv_series_detail_model.dart';
+import 'genre.dart';
 
+@immutable
 class DetailTvSeries extends Equatable {
   DetailTvSeries({
     required this.adult,
@@ -21,10 +21,8 @@ class DetailTvSeries extends Equatable {
     required this.inProduction,
     required this.languages,
     required this.lastAirDate,
-    required this.lastEpisodeToAir,
     required this.name,
     required this.nextEpisodeToAir,
-    required this.networks,
     required this.numberOfEpisodes,
     required this.numberOfSeasons,
     required this.originCountry,
@@ -33,7 +31,6 @@ class DetailTvSeries extends Equatable {
     required this.overview,
     required this.popularity,
     required this.posterPath,
-    required this.productionCompanies,
     required this.productionCountries,
     required this.seasons,
     required this.spokenLanguages,
@@ -47,18 +44,16 @@ class DetailTvSeries extends Equatable {
   final bool adult;
   final String? backdropPath;
   final List<CreatedByModel> createdBy;
-  final List<int> episodeRunTime;
+  final List<int>? episodeRunTime;
   final DateTime firstAirDate;
-  final List<GenreModel> genres;
+  final List<Genre>? genres;
   final String? homepage;
-  final int id;
+  final int? id;
   final bool? inProduction;
   final List<String> languages;
   final DateTime lastAirDate;
-  final TEpisodeToAirModel lastEpisodeToAir;
   final String? name;
-  final TEpisodeToAirModel nextEpisodeToAir;
-  final List<NetworkModel> networks;
+  final dynamic nextEpisodeToAir;
   final int numberOfEpisodes;
   final int numberOfSeasons;
   final List<String> originCountry;
@@ -67,14 +62,13 @@ class DetailTvSeries extends Equatable {
   final String? overview;
   final double popularity;
   final String? posterPath;
-  final List<NetworkModel> productionCompanies;
   final List<ProductionCountryModel> productionCountries;
-  final List<SeasonModel> seasons;
+  final List<Season>? seasons;
   final List<SpokenLanguageModel> spokenLanguages;
   final String? status;
   final String? tagline;
   final String? type;
-  final double voteAverage;
+  final double? voteAverage;
   final int voteCount;
 
   @override
@@ -91,10 +85,8 @@ class DetailTvSeries extends Equatable {
         inProduction,
         languages,
         lastAirDate,
-        lastEpisodeToAir,
         name,
         nextEpisodeToAir,
-        networks,
         numberOfEpisodes,
         numberOfSeasons,
         originCountry,
@@ -103,7 +95,6 @@ class DetailTvSeries extends Equatable {
         overview,
         popularity,
         posterPath,
-        productionCompanies,
         productionCountries,
         seasons,
         spokenLanguages,

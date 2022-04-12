@@ -7,6 +7,8 @@ import 'package:ditonton/domain/usecases/save_watchlist_tv_series.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../data/models/episode_response.dart';
+import '../../domain/usecases/get_tv_episode.dart';
 import '../../domain/usecases/get_tv_series_detail.dart';
 import '../../domain/usecases/get_tv_series_recommendations.dart';
 
@@ -19,6 +21,7 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
   final GetWatchListStatusTvSeries getWatchListStatusTvSeries;
   final SaveWatchlistTvSeries saveWatchlistTvSeries;
   final RemoveWatchlistTvSeries removeWatchlistTvSeries;
+  final GetTvEpisode getTvEpisode;
 
   TvSeriesDetailNotifier({
     required this.getTvSeriesDetail,
@@ -26,6 +29,7 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
     required this.getWatchListStatusTvSeries,
     required this.saveWatchlistTvSeries,
     required this.removeWatchlistTvSeries,
+    required this.getTvEpisode,
   });
 
   late DetailTvSeries _tvSeries;
@@ -40,6 +44,12 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
   RequestState _recommendationState = RequestState.Empty;
   RequestState get recommendationState => _recommendationState;
 
+  List<Episode> _tvEpisode = [];
+  List<Episode> get tvEpisode => _tvEpisode;
+
+  RequestState _episodeState = RequestState.Empty;
+  RequestState get episodeState => _episodeState;
+
   String _message = '';
   String get message => _message;
 
@@ -51,27 +61,61 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
     notifyListeners();
     final detailResult = await getTvSeriesDetail.execute(id);
     final recommendationResult = await getTvSeriesRecommendations.execute(id);
+    final episodeResult = await getTvEpisode.execute(id, 1);
+
     detailResult.fold(
       (failure) {
         _tvSeriesState = RequestState.Error;
         _message = failure.message;
         notifyListeners();
       },
-      (tvSeries) {
+      (tv) async {
         _recommendationState = RequestState.Loading;
-        _tvSeries = tvSeries;
+        _tvSeries = tv;
         notifyListeners();
         recommendationResult.fold(
           (failure) {
             _recommendationState = RequestState.Error;
             _message = failure.message;
           },
-          (tvSeriess) {
+          (tvs) {
             _recommendationState = RequestState.Loaded;
-            _tvSeriesRecommendations = tvSeriess;
+            _tvSeriesRecommendations = tvs;
+
+            episodeResult.fold(
+              (l) {
+                _episodeState = RequestState.Error;
+                _message = l.message;
+                notifyListeners();
+              },
+              (r) {
+                _episodeState = RequestState.Loaded;
+                _tvEpisode = r;
+                notifyListeners();
+              },
+            );
           },
         );
         _tvSeriesState = RequestState.Loaded;
+        notifyListeners();
+      },
+    );
+  }
+
+  Future fetchTvEpisode(int idTv, int idSeason) async {
+    _episodeState = RequestState.Loading;
+    notifyListeners();
+    final episodeResult = await getTvEpisode.execute(idTv, idSeason);
+
+    episodeResult.fold(
+      (l) {
+        _episodeState = RequestState.Error;
+        _message = l.message;
+        notifyListeners();
+      },
+      (r) {
+        _episodeState = RequestState.Loaded;
+        _tvEpisode = r;
         notifyListeners();
       },
     );
@@ -92,7 +136,7 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
       },
     );
 
-    await loadWatchlistStatusTVSeries(tvSeries.id);
+    await loadWatchlistStatusTVSeries(tvSeries.id!);
   }
 
   Future<void> removeFromWatchlistTvSeries(DetailTvSeries tvSeries) async {
@@ -107,7 +151,7 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
       },
     );
 
-    await loadWatchlistStatusTVSeries(tvSeries.id);
+    await loadWatchlistStatusTVSeries(tvSeries.id!);
   }
 
   Future<void> loadWatchlistStatusTVSeries(int id) async {

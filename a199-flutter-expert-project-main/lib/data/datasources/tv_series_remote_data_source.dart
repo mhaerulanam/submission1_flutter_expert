@@ -5,6 +5,7 @@ import 'package:ditonton/data/models/tv_series_model.dart';
 import 'package:ditonton/data/models/tv_series_response.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/episode_response.dart';
 import '../models/tv_series_detail_model.dart';
 
 abstract class TvSeriesRemoteDataSource {
@@ -13,6 +14,8 @@ abstract class TvSeriesRemoteDataSource {
   Future<List<TvSeriesModel>> getTopRatedTvSeries();
   Future<DetailTvSeriesModel> getTvSeriesDetail(int id);
   Future<List<TvSeriesModel>> getTvSeriesRecommendations(int id);
+  Future<EpisodeResponse> getTvEpisode(int idTv, int season);
+  Future<List<TvSeriesModel>> searchTv(String query);
 }
 
 class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
@@ -60,8 +63,8 @@ class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
   }
 
   @override
-  Future<DetailTvSeriesModel> getTvSeriesDetail(int id) async {
-    final response = await client.get(Uri.parse('$BASE_URL/tv/$id?$API_KEY'));
+  Future<DetailTvSeriesModel> getTvSeriesDetail(int idTv) async {
+    final response = await client.get(Uri.parse('$BASE_URL/tv/$idTv?$API_KEY'));
 
     if (response.statusCode == 200) {
       return DetailTvSeriesModel.fromJson(json.decode(response.body));
@@ -77,6 +80,30 @@ class TvSeriesRemoteDataSourceImpl implements TvSeriesRemoteDataSource {
 
     if (response.statusCode == 200) {
       return TvSeriesResponse.fromJson(json.decode(response.body)).tvSeriesList;
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<List<TvSeriesModel>> searchTv(String query) async {
+    final response = await client
+        .get(Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$query'));
+
+    if (response.statusCode == 200) {
+      return TvSeriesResponse.fromJson(json.decode(response.body)).tvSeriesList;
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<EpisodeResponse> getTvEpisode(int idTv, int season) async {
+    final response = await client
+        .get(Uri.parse('$BASE_URL/tv/$idTv/season/$season?$API_KEY'));
+
+    if (response.statusCode == 200) {
+      return EpisodeResponse.fromJson(response.body);
     } else {
       throw ServerException();
     }

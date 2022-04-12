@@ -36,7 +36,7 @@ class MovieDetailResponse extends Equatable {
   final String? imdbId;
   final String? originalLanguage;
   final String? originalTitle;
-  final String? overview;
+  final String overview;
   final double popularity;
   final String? posterPath;
   final String? releaseDate;

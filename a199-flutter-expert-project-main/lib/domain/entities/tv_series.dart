@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class TvSeries extends Equatable {
   TvSeries({
     required this.backdropPath,
@@ -27,7 +28,7 @@ class TvSeries extends Equatable {
   String? backdropPath;
   String? firstAirDate;
   List<int>? genreIds;
-  int id;
+  int? id;
   String? name;
   List<String>? originCountry;
   String? originalLanguage;

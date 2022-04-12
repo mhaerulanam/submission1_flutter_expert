@@ -1,12 +1,10 @@
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/entities/movie_detail.dart';
 import 'package:ditonton/domain/entities/tv_series_detail.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../domain/entities/tv_series.dart';
 
 class TvSeriesTable extends Equatable {
-  final int id;
+  final int? id;
   final String? name;
   final String? posterPath;
   final String? overview;

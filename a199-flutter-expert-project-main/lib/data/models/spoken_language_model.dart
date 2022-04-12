@@ -8,9 +8,9 @@ class SpokenLanguageModel extends Equatable {
     required this.name,
   });
 
-  String englishName;
-  String iso6391;
-  String name;
+  final String englishName;
+  final String iso6391;
+  final String name;
 
   factory SpokenLanguageModel.fromJson(Map<String, dynamic> json) =>
       SpokenLanguageModel(

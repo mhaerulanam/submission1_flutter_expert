@@ -1,20 +1,10 @@
 import 'package:ditonton/common/exception.dart';
-import 'package:ditonton/data/datasources/db/database_helper.dart';
 import 'package:ditonton/data/datasources/db/database_helper_tv_series.dart';
-import 'package:ditonton/data/models/movie_table.dart';
-import 'package:ditonton/data/models/tv_series_table.dart';
-import 'package:ditonton/data/models/tv_series_table.dart';
-import 'package:ditonton/data/models/tv_series_table.dart';
-import 'package:ditonton/data/models/tv_series_table.dart';
-import 'package:ditonton/data/models/tv_series_table.dart';
-import 'package:ditonton/data/models/tv_series_table.dart';
-import 'package:ditonton/data/models/tv_series_table.dart';
-import 'package:ditonton/data/models/tv_series_table.dart';
 import 'package:ditonton/data/models/tv_series_table.dart';
 
 abstract class TvSeriesLocalDataSource {
-  Future<String> insertWatchlistTvSeries(TvSeriesTable TvSeries);
-  Future<String> removeWatchlistTvSeries(TvSeriesTable TvSeries);
+  Future<String> insertWatchlistTvSeries(TvSeriesTable tvSeries);
+  Future<String> removeWatchlistTvSeries(TvSeriesTable tvSeries);
   Future<TvSeriesTable?> getTvSeriesById(int id);
   Future<List<TvSeriesTable>> getWatchlistTvSeries();
 }
@@ -25,9 +15,9 @@ class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
   TvSeriesLocalDataSourceImpl({required this.databaseHelperTvSeries});
 
   @override
-  Future<String> insertWatchlistTvSeries(TvSeriesTable TvSeries) async {
+  Future<String> insertWatchlistTvSeries(TvSeriesTable tvSeries) async {
     try {
-      await databaseHelperTvSeries.insertWatchlist(TvSeries);
+      await databaseHelperTvSeries.insertWatchlist(tvSeries);
       return 'Added to Watchlist';
     } catch (e) {
       throw DatabaseException(e.toString());
@@ -35,9 +25,9 @@ class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
   }
 
   @override
-  Future<String> removeWatchlistTvSeries(TvSeriesTable TvSeries) async {
+  Future<String> removeWatchlistTvSeries(TvSeriesTable tvSeries) async {
     try {
-      await databaseHelperTvSeries.removeWatchlist(TvSeries);
+      await databaseHelperTvSeries.removeWatchlist(tvSeries);
       return 'Removed from Watchlist';
     } catch (e) {
       throw DatabaseException(e.toString());

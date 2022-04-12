@@ -1,4 +1,3 @@
-import 'package:ditonton/data/models/tv_series_detail_model.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../domain/entities/create_by.dart';
@@ -12,11 +11,11 @@ class CreatedByModel extends Equatable {
     required this.profilePath,
   });
 
-  int id;
-  String creditId;
-  String name;
-  int gender;
-  dynamic profilePath;
+  final int id;
+  final String creditId;
+  final String name;
+  final int gender;
+  final dynamic profilePath;
 
   factory CreatedByModel.fromJson(Map<String, dynamic> json) => CreatedByModel(
         id: json["id"],

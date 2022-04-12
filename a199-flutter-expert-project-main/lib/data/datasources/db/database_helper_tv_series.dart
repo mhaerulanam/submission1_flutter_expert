@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:ditonton/data/models/movie_table.dart';
-import 'package:ditonton/data/models/tv_series_table.dart';
 import 'package:ditonton/data/models/tv_series_table.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -11,7 +9,8 @@ class DatabaseHelperTvSeries {
     _databaseHelperTvSeries = this;
   }
 
-  factory DatabaseHelperTvSeries() => _databaseHelperTvSeries ?? DatabaseHelperTvSeries._instance();
+  factory DatabaseHelperTvSeries() =>
+      _databaseHelperTvSeries ?? DatabaseHelperTvSeries._instance();
 
   static Database? _database;
 
@@ -74,7 +73,8 @@ class DatabaseHelperTvSeries {
 
   Future<List<Map<String, dynamic>>> getWatchlistTvSeries() async {
     final db = await database;
-    final List<Map<String, dynamic>> results = await db!.query(_tblWatchlistTvSeries);
+    final List<Map<String, dynamic>> results =
+        await db!.query(_tblWatchlistTvSeries);
 
     return results;
   }
