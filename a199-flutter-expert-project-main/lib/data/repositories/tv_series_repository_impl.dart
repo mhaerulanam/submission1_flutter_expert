@@ -16,12 +16,10 @@ import '../models/episode_response.dart';
 class TvSeriesRepositoryImpl implements TvSeriesRepository {
   final TvSeriesRemoteDataSource remoteDataSource;
   final TvSeriesLocalDataSource localDataSource;
-  final NetworkInfo networkInfo;
 
   TvSeriesRepositoryImpl({
     required this.remoteDataSource,
     required this.localDataSource,
-    required this.networkInfo,
   });
 
   @override

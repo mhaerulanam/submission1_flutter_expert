@@ -110,8 +110,6 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
               final tv = dataTv.watchlistTvSeries[index];
               return Column(
                 children: [
-                  Text(tv.overview ?? '-'),
-                  Text(tv.name ?? '-'),
                   TvSeriesCard(tv),
                 ],
               );

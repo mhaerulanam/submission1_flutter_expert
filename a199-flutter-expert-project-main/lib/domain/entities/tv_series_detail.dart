@@ -45,13 +45,13 @@ class DetailTvSeries extends Equatable {
   final String? backdropPath;
   final List<CreatedByModel> createdBy;
   final List<int>? episodeRunTime;
-  final DateTime firstAirDate;
+  final String firstAirDate;
   final List<Genre>? genres;
   final String? homepage;
   final int? id;
   final bool? inProduction;
   final List<String> languages;
-  final DateTime lastAirDate;
+  final String lastAirDate;
   final String? name;
   final dynamic nextEpisodeToAir;
   final int numberOfEpisodes;
