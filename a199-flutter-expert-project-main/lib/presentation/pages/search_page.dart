@@ -57,7 +57,7 @@ class SearchPage extends StatelessWidget {
 
   Widget _consumerMovie() {
     return Consumer<MovieSearchNotifier>(
-        builder: (context, data, child) {
+      builder: (context, data, child) {
         if (data.state == RequestState.Loading) {
           return Center(
             child: CircularProgressIndicator(),
