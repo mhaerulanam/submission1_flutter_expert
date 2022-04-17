@@ -38,7 +38,6 @@ import 'package:ditonton/presentation/provider/watchlist_tv_series_notifier.dart
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
-import 'common/network_info.dart';
 import 'data/datasources/tv_series_local_data_source.dart';
 import 'domain/usecases/get_popular_tv_series.dart';
 import 'domain/usecases/get_tv_episode.dart';
@@ -179,9 +178,6 @@ void init() {
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
   locator.registerLazySingleton<DatabaseHelperTvSeries>(
       () => DatabaseHelperTvSeries());
-
-  // network info
-  locator.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(locator()));
 
   // external
   locator.registerLazySingleton(() => http.Client());

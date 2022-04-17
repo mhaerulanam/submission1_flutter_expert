@@ -8,7 +8,6 @@ import 'dart:typed_data' as _i29;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:ditonton/common/failure.dart' as _i9;
-import 'package:ditonton/common/network_info.dart' as _i27;
 import 'package:ditonton/data/datasources/db/database_helper.dart' as _i16;
 import 'package:ditonton/data/datasources/db/database_helper_tv_series.dart'
     as _i26;
@@ -448,20 +447,6 @@ class MockDatabaseHelperTvSeries extends _i1.Mock
               returnValue: Future<List<Map<String, dynamic>>>.value(
                   <Map<String, dynamic>>[]))
           as _i8.Future<List<Map<String, dynamic>>>);
-}
-
-/// A class which mocks [NetworkInfo].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockNetworkInfo extends _i1.Mock implements _i27.NetworkInfo {
-  MockNetworkInfo() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i8.Future<bool> get isConnected =>
-      (super.noSuchMethod(Invocation.getter(#isConnected),
-          returnValue: Future<bool>.value(false)) as _i8.Future<bool>);
 }
 
 /// A class which mocks [Client].
