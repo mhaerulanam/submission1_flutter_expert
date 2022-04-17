@@ -1,8 +1,4 @@
-import 'package:ditonton/data/models/created_by_model.dart';
-import 'package:ditonton/data/models/movie_model.dart';
 import 'package:ditonton/data/models/production_country_model.dart';
-import 'package:ditonton/domain/entities/create_by.dart';
-import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/production_country.dart';
 import 'package:flutter_test/flutter_test.dart';
 

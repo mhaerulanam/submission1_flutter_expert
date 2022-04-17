@@ -1,10 +1,4 @@
-import 'package:ditonton/data/models/created_by_model.dart';
-import 'package:ditonton/data/models/movie_model.dart';
-import 'package:ditonton/data/models/season_model.dart';
 import 'package:ditonton/data/models/tv_series_table.dart';
-import 'package:ditonton/domain/entities/create_by.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/domain/entities/season.dart';
 import 'package:ditonton/domain/entities/tv_series.dart';
 import 'package:flutter_test/flutter_test.dart';
 
