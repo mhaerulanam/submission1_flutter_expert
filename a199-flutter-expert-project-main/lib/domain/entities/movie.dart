@@ -28,7 +28,7 @@ class Movie extends Equatable {
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;
-  int id;
+  int? id;
   String? originalTitle;
   String? overview;
   double? popularity;

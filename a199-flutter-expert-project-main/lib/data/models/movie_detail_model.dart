@@ -4,50 +4,50 @@ import 'package:equatable/equatable.dart';
 
 class MovieDetailResponse extends Equatable {
   MovieDetailResponse({
-    required this.adult,
-    required this.backdropPath,
-    required this.budget,
-    required this.genres,
-    required this.homepage,
-    required this.id,
-    required this.imdbId,
-    required this.originalLanguage,
-    required this.originalTitle,
-    required this.overview,
-    required this.popularity,
-    required this.posterPath,
-    required this.releaseDate,
-    required this.revenue,
-    required this.runtime,
-    required this.status,
-    required this.tagline,
-    required this.title,
-    required this.video,
-    required this.voteAverage,
-    required this.voteCount,
+    this.adult,
+    this.backdropPath,
+    this.budget,
+    this.genres,
+    this.homepage,
+    this.id,
+    this.imdbId,
+    this.originalLanguage,
+    this.originalTitle,
+    this.overview,
+    this.popularity,
+    this.posterPath,
+    this.releaseDate,
+    this.revenue,
+    this.runtime,
+    this.status,
+    this.tagline,
+    this.title,
+    this.video,
+    this.voteAverage,
+    this.voteCount,
   });
 
-  final bool adult;
-  final String? backdropPath;
-  final int budget;
-  final List<GenreModel> genres;
-  final String? homepage;
-  final int id;
-  final String? imdbId;
-  final String? originalLanguage;
-  final String? originalTitle;
-  final String overview;
-  final double popularity;
-  final String? posterPath;
-  final String? releaseDate;
-  final int revenue;
-  final int runtime;
-  final String? status;
-  final String? tagline;
-  final String? title;
-  final bool video;
-  final double voteAverage;
-  final int voteCount;
+  bool? adult;
+  String? backdropPath;
+  int? budget;
+  List<GenreModel>? genres;
+  String? homepage;
+  int? id;
+  String? imdbId;
+  String? originalLanguage;
+  String? originalTitle;
+  String? overview;
+  double? popularity;
+  String? posterPath;
+  String? releaseDate;
+  int? revenue;
+  int? runtime;
+  String? status;
+  String? tagline;
+  String? title;
+  bool? video;
+  double? voteAverage;
+  int? voteCount;
 
   factory MovieDetailResponse.fromJson(Map<String, dynamic> json) =>
       MovieDetailResponse(
@@ -79,7 +79,7 @@ class MovieDetailResponse extends Equatable {
         "adult": adult,
         "backdrop_path": backdropPath,
         "budget": budget,
-        "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
+        "genres": List<dynamic>.from(genres!.map((x) => x.toJson())),
         "homepage": homepage,
         "id": id,
         "imdb_id": imdbId,
@@ -103,7 +103,7 @@ class MovieDetailResponse extends Equatable {
     return MovieDetail(
       adult: this.adult,
       backdropPath: this.backdropPath,
-      genres: this.genres.map((genre) => genre.toEntity()).toList(),
+      genres: this.genres!.map((genre) => genre.toEntity()).toList(),
       id: this.id,
       originalTitle: this.originalTitle,
       overview: this.overview,

@@ -25,27 +25,6 @@ class EpisodeResponse extends Equatable {
   final String? posterPath;
   final num? seasonNumber;
 
-  EpisodeResponse copyWith({
-    String? id,
-    DateTime? airDate,
-    List<Episode>? episodes,
-    String? name,
-    String? overview,
-    num? episodeResponseId,
-    String? posterPath,
-    num? seasonNumber,
-  }) =>
-      EpisodeResponse(
-        id: id ?? this.id,
-        airDate: airDate ?? this.airDate,
-        episodes: episodes ?? this.episodes,
-        name: name ?? this.name,
-        overview: overview ?? this.overview,
-        episodeResponseId: episodeResponseId ?? this.episodeResponseId,
-        posterPath: posterPath ?? this.posterPath,
-        seasonNumber: seasonNumber ?? this.seasonNumber,
-      );
-
   factory EpisodeResponse.fromJson(String str) =>
       EpisodeResponse.fromMap(json.decode(str));
 

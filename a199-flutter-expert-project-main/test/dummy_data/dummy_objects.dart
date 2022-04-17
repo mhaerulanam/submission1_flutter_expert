@@ -1,13 +1,10 @@
 import 'package:ditonton/data/models/episode_response.dart';
 import 'package:ditonton/data/models/movie_table.dart';
 import 'package:ditonton/data/models/tv_series_table.dart';
-import 'package:ditonton/domain/entities/create_by.dart';
 import 'package:ditonton/domain/entities/episode.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
-import 'package:ditonton/domain/entities/production_country.dart';
-import 'package:ditonton/domain/entities/spoken_language.dart';
 import 'package:ditonton/domain/entities/tv_series.dart';
 import 'package:ditonton/domain/entities/tv_series_detail.dart';
 
@@ -94,17 +91,7 @@ final testTvSeries = TvSeries(
 final testTvSeriesList = [testTvSeries];
 
 final testTvSeriesDetail = DetailTvSeries(
-    adult: false,
     backdropPath: "/1qpUk27LVI9UoTS7S0EixUBj5aR.jpg",
-    createdBy: [
-      CreatedBy(
-          id: 566273,
-          creditId: "623ca00ad1a89300885f6b46",
-          name: "Kyle Killen",
-          gender: 2,
-          profilePath: null
-      )
-    ],
     episodeRunTime: [59],
     firstAirDate: "",
     genres: [
@@ -138,20 +125,7 @@ final testTvSeriesDetail = DetailTvSeries(
         "of the future",
     popularity: 6106.197,
     posterPath: "/nJUHX3XL1jMkk8honUZnUmudFb9.jpg",
-    productionCountries: [
-      ProductionCountry(
-          iso31661: "US",
-          name: "United States of America"
-      )
-    ],
     seasons: [
-    ],
-    spokenLanguages: [
-      SpokenLanguage(
-          englishName: "English",
-          iso6391: "en",
-          name: "English"
-      )
     ],
     status: "Returning Series",
     tagline: "Find the Halo, win the war.",
@@ -208,49 +182,45 @@ final testTvEpisodeResponse = EpisodeResponse(
   seasonNumber: 1,
 );
 
-//
-// final testTvDetail = DetailTvSeries(
-//   // adult: null,
-//   // createdBy: [],
-//   // productionCountries: [],
-//   // seasons:[],
-//   // spokenLanguages: [],
-//   voteCount: 29,
-//   voteAverage: 5.8,
-//   backdropPath: '/oC9SgtJTDCEpWnTBtVGoAvjl5hb.jpg',
-//   posterPath: '/dsAJhCLYX1fiNRoiiJqR6Up4aJ.jpg',
-//   popularity: 2907.317,
-//   overview:
-//   "Rachael Ray, also known as The Rachael Ray Show, is an American talk show starring Rachael Ray that debuted in syndication in the United States and Canada on September 18, 2006. It is filmed at Chelsea Television Studios in New York City. The show's 8th season premiered on September 9, 2013, and became the last Harpo show in syndication to switch to HD with a revamped studio.",
-//   originalName: 'Rachael Ray',
-//   originalLanguage: 'en',
-//   originCountry: const ['US'],
-//   name: 'Rachael Ray',
-//   id: 1991,
-//   genres: [],
-//   firstAirDate: DateTime(2006, 09, 18),
-//   episodeRunTime: const [60, 42],
-//   homepage: "http://www.rachaelrayshow.com/",
-//   type: "Talk Show",
-//   tagline: "",
-//   status: "Returning Series",
-//   inProduction: true,
-//   numberOfSeasons: 13,
-//   numberOfEpisodes: 1051,
-//   languages: const ["en"],
-//   nextEpisodeToAir: const {
-//     "air_date": "2021-10-20",
-//     "episode_number": 28,
-//     "id": 3286382,
-//     "name":
-//     "Jeremy Sisto Dishes on \"Law & Order\" Revival + Rach's Greek-Style Burger Patties",
-//     "overview":
-//     "\"FBI's\" Jeremy Sisto is talking about the newest season of the hit show and dishing on the \"Law & Order\" revival. Plus, makeovers are BACK! Clinton Kelly is hooking up an inspiring Philadelphia police officer with our first makeover back in the studio. Later, a real-life spy shares safety tips. For dinner, Rachael's making delish Greek-style burger patties.",
-//     "production_code": "",
-//     "season_number": 16,
-//     "still_path": null,
-//     "vote_average": 0.0,
-//     "vote_count": 0
-//   },
-//   lastAirDate: DateTime(2021, 10, 19),
-// );
+
+final testTvDetail = DetailTvSeries(
+  seasons:[],
+  voteCount: 29,
+  voteAverage: 5.8,
+  backdropPath: '/oC9SgtJTDCEpWnTBtVGoAvjl5hb.jpg',
+  posterPath: '/dsAJhCLYX1fiNRoiiJqR6Up4aJ.jpg',
+  popularity: 2907.317,
+  overview:
+  "Rachael Ray, also known as The Rachael Ray Show, is an American talk show starring Rachael Ray that debuted in syndication in the United States and Canada on September 18, 2006. It is filmed at Chelsea Television Studios in New York City. The show's 8th season premiered on September 9, 2013, and became the last Harpo show in syndication to switch to HD with a revamped studio.",
+  originalName: 'Rachael Ray',
+  originalLanguage: 'en',
+  originCountry: const ['US'],
+  name: 'Rachael Ray',
+  id: 1991,
+  genres: [],
+  firstAirDate: "2006-09-18",
+  episodeRunTime: const [60, 42],
+  homepage: "http://www.rachaelrayshow.com/",
+  type: "Talk Show",
+  tagline: "",
+  status: "Returning Series",
+  inProduction: true,
+  numberOfSeasons: 13,
+  numberOfEpisodes: 1051,
+  languages: const ["en"],
+  nextEpisodeToAir: const {
+    "air_date": "2021-10-20",
+    "episode_number": 28,
+    "id": 3286382,
+    "name":
+    "Jeremy Sisto Dishes on \"Law & Order\" Revival + Rach's Greek-Style Burger Patties",
+    "overview":
+    "\"FBI's\" Jeremy Sisto is talking about the newest season of the hit show and dishing on the \"Law & Order\" revival. Plus, makeovers are BACK! Clinton Kelly is hooking up an inspiring Philadelphia police officer with our first makeover back in the studio. Later, a real-life spy shares safety tips. For dinner, Rachael's making delish Greek-style burger patties.",
+    "production_code": "",
+    "season_number": 16,
+    "still_path": null,
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  lastAirDate: "2021-10-19",
+);

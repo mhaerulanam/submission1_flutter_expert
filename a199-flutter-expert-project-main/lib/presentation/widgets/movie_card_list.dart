@@ -18,7 +18,7 @@ class MovieCard extends StatelessWidget {
           Navigator.pushNamed(
             context,
             MovieDetailPage.ROUTE_NAME,
-            arguments: MovieDetailArgs(id: movie.id, isMovie: true),
+            arguments: MovieDetailArgs(id: movie.id!, isMovie: true),
           );
         },
         child: Stack(

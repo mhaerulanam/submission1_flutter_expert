@@ -71,12 +71,12 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
           return SafeArea(
             child: DetailContent(
               isAddedWatchlist: isAddedWatchlist,
-              voteAverage: movie.voteAverage,
+              voteAverage: movie.voteAverage!,
               title: movie.title.toString(),
-              runtime: movie.runtime,
-              overview: movie.overview,
+              runtime: movie.runtime!,
+              overview: movie.overview!,
               imageUrl: 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
-              genres: movie.genres,
+              genres: movie.genres!,
               onWatchListClick: () async {
                 if (!isAddedWatchlist) {
                   await Provider.of<MovieDetailNotifier>(context, listen: false)
@@ -143,7 +143,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                                   context,
                                   MovieDetailPage.ROUTE_NAME,
                                   arguments: MovieDetailArgs(
-                                      id: movie.id, isMovie: true),
+                                      id: movie.id!, isMovie: true),
                                 );
                               },
                             ),

@@ -39,7 +39,8 @@ class CreatedByModel extends Equatable {
         creditId: this.creditId,
         name: this.name,
         gender: this.gender,
-        profilePath: this.profilePath);
+        profilePath: this.profilePath
+    );
   }
 
   @override

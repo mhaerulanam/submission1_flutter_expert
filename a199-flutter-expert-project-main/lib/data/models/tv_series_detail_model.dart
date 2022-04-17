@@ -8,74 +8,73 @@ import 'package:equatable/equatable.dart';
 import 'created_by_model.dart';
 import 'genre_model.dart';
 
+// ignore: must_be_immutable
 class DetailTvSeriesModel extends Equatable {
   DetailTvSeriesModel({
-    required this.adult,
-    required this.backdropPath,
-    required this.createdBy,
-    required this.episodeRunTime,
-    required this.firstAirDate,
-    required this.genres,
-    required this.homepage,
-    required this.id,
-    required this.inProduction,
-    required this.languages,
-    required this.lastAirDate,
-    required this.lastEpisodeToAir,
-    required this.name,
-    required this.nextEpisodeToAir,
-    required this.networks,
-    required this.numberOfEpisodes,
-    required this.numberOfSeasons,
-    required this.originCountry,
-    required this.originalLanguage,
-    required this.originalName,
-    required this.overview,
-    required this.popularity,
-    required this.posterPath,
-    required this.productionCompanies,
-    required this.productionCountries,
-    required this.seasons,
-    required this.spokenLanguages,
-    required this.status,
-    required this.tagline,
-    required this.type,
-    required this.voteAverage,
-    required this.voteCount,
+    this.backdropPath,
+    this.createdBy,
+    this.episodeRunTime,
+    this.firstAirDate,
+    this.genres,
+    this.homepage,
+    this.id,
+    this.inProduction,
+    this.languages,
+    this.lastAirDate,
+    this.lastEpisodeToAir,
+    this.name,
+    this.nextEpisodeToAir,
+    this.networks,
+    this.numberOfEpisodes,
+    this.numberOfSeasons,
+    this.originCountry,
+    this.originalLanguage,
+    this.originalName,
+    this.overview,
+    this.popularity,
+    this.posterPath,
+    this.productionCompanies,
+    this.productionCountries,
+    this.seasons,
+    this.spokenLanguages,
+    this.status,
+    this.tagline,
+    this.type,
+    this.voteAverage,
+    this.voteCount,
   });
 
-  final bool? adult;
-  final String? backdropPath;
-  final List<CreatedByModel>? createdBy;
-  final List<int>? episodeRunTime;
-  final String? firstAirDate;
-  final List<GenreModel>? genres;
-  final String homepage;
-  final int id;
-  final bool? inProduction;
-  final List<String>? languages;
-  final String lastAirDate;
-  final LastEpisodeToAir? lastEpisodeToAir;
-  final String? name;
-  final dynamic nextEpisodeToAir;
-  final List<Network>? networks;
-  final int numberOfEpisodes;
-  final int numberOfSeasons;
-  final List<String>? originCountry;
-  final String? originalLanguage;
-  final String? originalName;
-  final String? overview;
-  final double popularity;
-  final String? posterPath;
-  final List<Network>? productionCompanies;
-  final List<ProductionCountryModel>? productionCountries;
-  final List<SeasonModel>? seasons;
-  final List<SpokenLanguageModel>? spokenLanguages;
-  final String? status;
-  final String? tagline;
-  final String? type;
-  final double? voteAverage;
-  final int voteCount;
+  String? backdropPath;
+  List<CreatedByModel>? createdBy;
+  List<int>? episodeRunTime;
+  String? firstAirDate;
+  List<GenreModel>? genres;
+  String? homepage;
+  int? id;
+  bool? inProduction;
+  List<String>? languages;
+  String? lastAirDate;
+  LastEpisodeToAir? lastEpisodeToAir;
+  String? name;
+  dynamic nextEpisodeToAir;
+  List<Network>? networks;
+  int? numberOfEpisodes;
+  int? numberOfSeasons;
+  List<String>? originCountry;
+  String? originalLanguage;
+  String? originalName;
+  String? overview;
+  double? popularity;
+  String? posterPath;
+  List<Network>? productionCompanies;
+  List<ProductionCountryModel>? productionCountries;
+  List<SeasonModel>? seasons;
+  List<SpokenLanguageModel>? spokenLanguages;
+  String? status;
+  String? tagline;
+  String? type;
+  double? voteAverage;
+  int? voteCount;
 
   factory DetailTvSeriesModel.fromJson(String str) =>
       DetailTvSeriesModel.fromMap(json.decode(str));
@@ -142,14 +141,11 @@ class DetailTvSeriesModel extends Equatable {
         type: json["type"],
         voteAverage: json["vote_average"].toDouble(),
         voteCount: json["vote_count"],
-        adult: json["adult"],
       );
 
   DetailTvSeries toEntity() {
     return DetailTvSeries(
-        adult: adult!,
         backdropPath: backdropPath,
-        createdBy: createdBy!.map((create) => create.toEntity()).toList(),
         episodeRunTime: episodeRunTime,
         firstAirDate: firstAirDate!,
         genres: genres!.map((genre) => genre.toEntity()).toList(),
@@ -168,11 +164,7 @@ class DetailTvSeriesModel extends Equatable {
         overview: overview!,
         popularity: popularity,
         posterPath: posterPath!,
-        productionCountries: productionCountries!.map((production)
-            => production.toEntity()).toList(),
         seasons: seasons!.map((genre) => genre.toEntity()).toList(),
-        spokenLanguages: spokenLanguages!.map((spoken)
-          => spoken.toEntity()).toList(),
         status: status,
         tagline: tagline!,
         type: type!,
@@ -182,7 +174,6 @@ class DetailTvSeriesModel extends Equatable {
 
   @override
   List<Object?> get props => [
-        adult,
         backdropPath,
         createdBy,
         episodeRunTime,

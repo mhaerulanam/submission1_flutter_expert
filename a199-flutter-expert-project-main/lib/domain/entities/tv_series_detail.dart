@@ -1,18 +1,13 @@
-import 'package:ditonton/domain/entities/production_country.dart';
 import 'package:ditonton/domain/entities/season.dart';
-import 'package:ditonton/domain/entities/spoken_language.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'create_by.dart';
 import 'genre.dart';
 
 @immutable
 class DetailTvSeries extends Equatable {
   DetailTvSeries({
-    required this.adult,
     required this.backdropPath,
-    required this.createdBy,
     required this.episodeRunTime,
     required this.firstAirDate,
     required this.genres,
@@ -31,9 +26,7 @@ class DetailTvSeries extends Equatable {
     required this.overview,
     required this.popularity,
     required this.posterPath,
-    required this.productionCountries,
     required this.seasons,
-    required this.spokenLanguages,
     required this.status,
     required this.tagline,
     required this.type,
@@ -41,42 +34,35 @@ class DetailTvSeries extends Equatable {
     required this.voteCount,
   });
 
-  final bool adult;
   final String? backdropPath;
-  final List<CreatedBy> createdBy;
   final List<int>? episodeRunTime;
-  final String firstAirDate;
+  final String? firstAirDate;
   final List<Genre>? genres;
   final String? homepage;
   final int? id;
   final bool? inProduction;
-  final List<String> languages;
-  final String lastAirDate;
+  final List<String>? languages;
+  final String? lastAirDate;
   final String? name;
   final dynamic nextEpisodeToAir;
-  final int numberOfEpisodes;
-  final int numberOfSeasons;
-  final List<String> originCountry;
+  final int? numberOfEpisodes;
+  final int? numberOfSeasons;
+  final List<String>? originCountry;
   final String? originalLanguage;
   final String? originalName;
-  final String overview;
-  final double popularity;
+  final String? overview;
+  final double? popularity;
   final String? posterPath;
-  final List<ProductionCountry> productionCountries;
   final List<Season>? seasons;
-  final List<SpokenLanguage> spokenLanguages;
   final String? status;
   final String? tagline;
   final String? type;
   final double? voteAverage;
-  final int voteCount;
+  final int? voteCount;
 
   @override
   List<Object?> get props => [
-        adult,
-        adult,
         backdropPath,
-        createdBy,
         episodeRunTime,
         firstAirDate,
         genres,
@@ -95,9 +81,7 @@ class DetailTvSeries extends Equatable {
         overview,
         popularity,
         posterPath,
-        productionCountries,
         seasons,
-        spokenLanguages,
         status,
         tagline,
         type,

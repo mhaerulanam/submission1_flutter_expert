@@ -202,9 +202,94 @@ void main() {
               result, Left(ConnectionFailure('Failed to connect to the network')));
         });
   });
+  //
+  // group('Get tv series Detail', () {
+  //   final tId = 1;
+  //
+  //   test(
+  //       'should return Server Failure when the call to remote data source is unsuccessful',
+  //           () async {
+  //         // arrange
+  //         when(mockRemoteDataSource.getTvSeriesDetail(tId))
+  //             .thenThrow(ServerException());
+  //         // act
+  //         final result = await repository.getTvSeriesDetail(tId);
+  //         // assert
+  //         verify(mockRemoteDataSource.getTvSeriesDetail(tId));
+  //         expect(result, equals(Left(ServerFailure(''))));
+  //       });
+  //
+  //   test(
+  //       'should return connection failure when the device is not connected to internet',
+  //           () async {
+  //         // arrange
+  //         when(mockRemoteDataSource.getTvSeriesDetail(tId))
+  //             .thenThrow(SocketException('Failed to connect to the network'));
+  //         // act
+  //         final result = await repository.getTvSeriesDetail(tId);
+  //         // assert
+  //         verify(mockRemoteDataSource.getTvSeriesDetail(tId));
+  //         expect(result,
+  //             equals(Left(ConnectionFailure('Failed to connect to the network'))));
+  //       });
+  // });
 
-  group('Get tv series Detail', () {
-    final tId = 1;
+  group('Get Tv Detail', () {
+    const tId = 1991;
+    final tTvResponse = DetailTvSeriesModel(
+      seasons:[],
+      voteCount: 29,
+      voteAverage: 5.8,
+      backdropPath: '/oC9SgtJTDCEpWnTBtVGoAvjl5hb.jpg',
+      posterPath: '/dsAJhCLYX1fiNRoiiJqR6Up4aJ.jpg',
+      popularity: 2907.317,
+      overview:
+      "Rachael Ray, also known as The Rachael Ray Show, is an American talk show starring Rachael Ray that debuted in syndication in the United States and Canada on September 18, 2006. It is filmed at Chelsea Television Studios in New York City. The show's 8th season premiered on September 9, 2013, and became the last Harpo show in syndication to switch to HD with a revamped studio.",
+      originalName: 'Rachael Ray',
+      originalLanguage: 'en',
+      originCountry: const ['US'],
+      name: 'Rachael Ray',
+      id: 1991,
+      genres: [],
+      firstAirDate: "2006-09-18",
+      lastAirDate: "2021-10-19",
+      episodeRunTime: const [60, 42],
+      homepage: "http://www.rachaelrayshow.com/",
+      type: "Talk Show",
+      tagline: "",
+      status: "Returning Series",
+      inProduction: true,
+      numberOfSeasons: 13,
+      numberOfEpisodes: 1051,
+      languages: const ["en"],
+      nextEpisodeToAir: const {
+        "air_date": "2021-10-20",
+        "episode_number": 28,
+        "id": 3286382,
+        "name":
+        "Jeremy Sisto Dishes on \"Law & Order\" Revival + Rach's Greek-Style Burger Patties",
+        "overview":
+        "\"FBI's\" Jeremy Sisto is talking about the newest season of the hit show and dishing on the \"Law & Order\" revival. Plus, makeovers are BACK! Clinton Kelly is hooking up an inspiring Philadelphia police officer with our first makeover back in the studio. Later, a real-life spy shares safety tips. For dinner, Rachael's making delish Greek-style burger patties.",
+        "production_code": "",
+        "season_number": 16,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+    );
+
+    test(
+        'should return Tv data when the call to remote data source is successful',
+            () async {
+          // arrange
+          when(mockRemoteDataSource.getTvSeriesDetail(tId))
+              .thenAnswer((_) async => tTvResponse);
+          // act
+          final result = await repository.getTvSeriesDetail(tId);
+          // assert
+          verify(mockRemoteDataSource.getTvSeriesDetail(tId));
+          expect(result, equals(Right(testTvDetail)));
+        });
 
     test(
         'should return Server Failure when the call to remote data source is unsuccessful',
@@ -223,8 +308,8 @@ void main() {
         'should return connection failure when the device is not connected to internet',
             () async {
           // arrange
-          when(mockRemoteDataSource.getTvSeriesDetail(tId))
-              .thenThrow(SocketException('Failed to connect to the network'));
+          when(mockRemoteDataSource.getTvSeriesDetail(tId)).thenThrow(
+              const SocketException('Failed to connect to the network'));
           // act
           final result = await repository.getTvSeriesDetail(tId);
           // assert
@@ -233,100 +318,6 @@ void main() {
               equals(Left(ConnectionFailure('Failed to connect to the network'))));
         });
   });
-  //
-  // group('Get Tv Detail', () {
-  //   const tId = 1991;
-  //   final tTvResponse = DetailTvSeries(
-  //     adult: false,
-  //     createdBy: [],
-  //     productionCountries: [],
-  //     seasons:[],
-  //     spokenLanguages: [],
-  //     voteCount: 29,
-  //     voteAverage: 5.8,
-  //     backdropPath: '/oC9SgtJTDCEpWnTBtVGoAvjl5hb.jpg',
-  //     posterPath: '/dsAJhCLYX1fiNRoiiJqR6Up4aJ.jpg',
-  //     popularity: 2907.317,
-  //     overview:
-  //     "Rachael Ray, also known as The Rachael Ray Show, is an American talk show starring Rachael Ray that debuted in syndication in the United States and Canada on September 18, 2006. It is filmed at Chelsea Television Studios in New York City. The show's 8th season premiered on September 9, 2013, and became the last Harpo show in syndication to switch to HD with a revamped studio.",
-  //     originalName: 'Rachael Ray',
-  //     originalLanguage: 'en',
-  //     originCountry: const ['US'],
-  //     name: 'Rachael Ray',
-  //     id: 1991,
-  //     genres: [],
-  //     firstAirDate: DateTime(2006, 09, 18),
-  //     lastAirDate: DateTime(2021, 10, 19),
-  //     episodeRunTime: const [60, 42],
-  //     homepage: "http://www.rachaelrayshow.com/",
-  //     type: "Talk Show",
-  //     tagline: "",
-  //     status: "Returning Series",
-  //     inProduction: true,
-  //     numberOfSeasons: 13,
-  //     numberOfEpisodes: 1051,
-  //     languages: const ["en"],
-  //     nextEpisodeToAir: const {
-  //       "air_date": "2021-10-20",
-  //       "episode_number": 28,
-  //       "id": 3286382,
-  //       "name":
-  //       "Jeremy Sisto Dishes on \"Law & Order\" Revival + Rach's Greek-Style Burger Patties",
-  //       "overview":
-  //       "\"FBI's\" Jeremy Sisto is talking about the newest season of the hit show and dishing on the \"Law & Order\" revival. Plus, makeovers are BACK! Clinton Kelly is hooking up an inspiring Philadelphia police officer with our first makeover back in the studio. Later, a real-life spy shares safety tips. For dinner, Rachael's making delish Greek-style burger patties.",
-  //       "production_code": "",
-  //       "season_number": 16,
-  //       "still_path": null,
-  //       "vote_average": 0.0,
-  //       "vote_count": 0
-  //     },
-  //   );
-  //
-  //   test(
-  //       'should return Tv data when the call to remote data source is successful',
-  //           () async {
-  //         // arrange
-  //         when(mockRemoteDataSource.getTvDetail(tId))
-  //             .thenAnswer((_) async => tTvResponse);
-  //         // act
-  //         final result = await repository.getTvDetail(tId);
-  //         // assert
-  //         verify(mockRemoteDataSource.getTvDetail(tId));
-  //         expect(result, equals(Right(testTvDetail)));
-  //       });
-  //
-  //   test(
-  //       'should return Server Failure when the call to remote data source is unsuccessful',
-  //           () async {
-  //         // arrange
-  //         when(mockRemoteDataSource.getTvDetail(tId))
-  //             .thenThrow(ServerException());
-  //         // act
-  //         final result = await repository.getTvDetail(tId);
-  //         // assert
-  //         verify(mockRemoteDataSource.getTvDetail(tId));
-  //         expect(
-  //             result,
-  //             equals(
-  //                 Left(ServerFailure('Failed to connect to the server'))));
-  //       });
-  //
-  //   test(
-  //       'should return connection failure when the device is not connected to internet',
-  //           () async {
-  //         // arrange
-  //         when(mockRemoteDataSource.getTvDetail(tId)).thenThrow(
-  //             const SocketException('Failed to connect to the network'));
-  //         // act
-  //         final result = await repository.getTvDetail(tId);
-  //         // assert
-  //         verify(mockRemoteDataSource.getTvDetail(tId));
-  //         expect(
-  //             result,
-  //             equals(Left(
-  //                 ConnectionFailure('Failed to connect to the network'))));
-  //       });
-  // });
 
   group('Get tv series Recommendations', () {
     final tTvList = <TvSeriesModel>[];
