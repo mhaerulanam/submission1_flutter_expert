@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
-import '../../data/models/episode_response.dart';
+import '../../domain/entities/episode.dart';
 import '../provider/tv_series_detail_notifier.dart';
 import 'home_movie_page.dart';
 
@@ -314,10 +314,9 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                           itemCount: seasons!.length,
                           itemBuilder: (context, index) {
                             final item = seasons[index];
-                            String overview =
-                                (item.overview?.isNotEmpty ?? false)
-                                    ? item.overview.toString()
-                                    : "-";
+                            String overview = (item.overview) != null
+                                ? item.overview.toString()
+                                : "-";
                             return Padding(
                               padding: const EdgeInsets.all(4.0),
                               child: Card(

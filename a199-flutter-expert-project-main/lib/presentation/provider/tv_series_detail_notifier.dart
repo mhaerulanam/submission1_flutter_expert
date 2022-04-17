@@ -7,7 +7,7 @@ import 'package:ditonton/domain/usecases/save_watchlist_tv_series.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../data/models/episode_response.dart';
+import '../../domain/entities/episode.dart';
 import '../../domain/usecases/get_tv_episode.dart';
 import '../../domain/usecases/get_tv_series_detail.dart';
 import '../../domain/usecases/get_tv_series_recommendations.dart';

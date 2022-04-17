@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:ditonton/common/failure.dart';
-import 'package:ditonton/data/models/episode_response.dart';
 
+import '../entities/episode.dart';
 import '../repositories/tv_series_repository.dart';
 
 class GetTvEpisode {

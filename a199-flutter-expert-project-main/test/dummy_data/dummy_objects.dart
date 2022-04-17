@@ -1,12 +1,13 @@
-import 'package:ditonton/data/models/created_by_model.dart';
+import 'package:ditonton/data/models/episode_response.dart';
 import 'package:ditonton/data/models/movie_table.dart';
-import 'package:ditonton/data/models/production_country_model.dart';
-import 'package:ditonton/data/models/spoken_language_model.dart';
-import 'package:ditonton/data/models/tv_series_detail_model.dart';
 import 'package:ditonton/data/models/tv_series_table.dart';
+import 'package:ditonton/domain/entities/create_by.dart';
+import 'package:ditonton/domain/entities/episode.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
+import 'package:ditonton/domain/entities/production_country.dart';
+import 'package:ditonton/domain/entities/spoken_language.dart';
 import 'package:ditonton/domain/entities/tv_series.dart';
 import 'package:ditonton/domain/entities/tv_series_detail.dart';
 
@@ -96,7 +97,7 @@ final testTvSeriesDetail = DetailTvSeries(
     adult: false,
     backdropPath: "/1qpUk27LVI9UoTS7S0EixUBj5aR.jpg",
     createdBy: [
-      CreatedByModel(
+      CreatedBy(
           id: 566273,
           creditId: "623ca00ad1a89300885f6b46",
           name: "Kyle Killen",
@@ -138,20 +139,15 @@ final testTvSeriesDetail = DetailTvSeries(
     popularity: 6106.197,
     posterPath: "/nJUHX3XL1jMkk8honUZnUmudFb9.jpg",
     productionCountries: [
-      ProductionCountryModel(
+      ProductionCountry(
           iso31661: "US",
           name: "United States of America"
       )
     ],
     seasons: [
-      Season(
-          id: 284981,
-          name: "Specials",
-          overview: "",
-      )
     ],
     spokenLanguages: [
-      SpokenLanguageModel(
+      SpokenLanguage(
           englishName: "English",
           iso6391: "en",
           name: "English"
@@ -184,3 +180,27 @@ final testTvSeriesMap = {
   'posterPath': 'posterPath',
   'name': 'name',
 };
+
+final testTvEpisode = Episode(
+  airDate: "2006-09-18",
+  episodeNumber: 1,
+  id: 24809,
+  name: "Rachael's Premiere",
+  overview: "",
+  productionCode: "",
+  seasonNumber: 1,
+  stillPath: null,
+  voteAverage: 0.0,
+  voteCount: 0.0,
+);
+final testTvEpisodeList = <Episode>[testTvEpisode];
+final testTvEpisodeResponse = EpisodeResponse(
+  id: "52571e1819c2957114101a1a",
+  airDate: DateTime(2006, 09, 18),
+  episodes: testTvEpisodeList,
+  name: "Season 1",
+  overview: "",
+  episodeResponseId: 1438,
+  posterPath: null,
+  seasonNumber: 1,
+);

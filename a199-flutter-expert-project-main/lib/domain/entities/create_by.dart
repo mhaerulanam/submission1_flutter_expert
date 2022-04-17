@@ -9,10 +9,10 @@ class CreatedBy extends Equatable {
     required this.profilePath,
   });
 
-  final int id;
-  final String creditId;
-  final String name;
-  final int gender;
+  final int? id;
+  final String? creditId;
+  final String? name;
+  final int? gender;
   final dynamic profilePath;
 
   @override

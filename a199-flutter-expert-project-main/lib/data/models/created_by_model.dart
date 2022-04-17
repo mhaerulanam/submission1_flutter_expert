@@ -11,10 +11,10 @@ class CreatedByModel extends Equatable {
     required this.profilePath,
   });
 
-  final int id;
-  final String creditId;
-  final String name;
-  final int gender;
+  final int? id;
+  final String? creditId;
+  final String? name;
+  final int? gender;
   final dynamic profilePath;
 
   factory CreatedByModel.fromJson(Map<String, dynamic> json) => CreatedByModel(

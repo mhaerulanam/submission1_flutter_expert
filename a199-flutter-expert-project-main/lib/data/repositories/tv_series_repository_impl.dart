@@ -9,8 +9,8 @@ import 'package:ditonton/domain/entities/tv_series_detail.dart';
 import 'package:ditonton/domain/repositories/tv_series_repository.dart';
 
 import '../../common/exception.dart';
+import '../../domain/entities/episode.dart';
 import '../datasources/tv_series_local_data_source.dart';
-import '../models/episode_response.dart';
 
 class TvSeriesRepositoryImpl implements TvSeriesRepository {
   final TvSeriesRemoteDataSource remoteDataSource;

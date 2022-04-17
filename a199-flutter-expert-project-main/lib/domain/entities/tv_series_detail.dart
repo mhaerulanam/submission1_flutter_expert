@@ -1,10 +1,10 @@
-import 'package:ditonton/data/models/production_country_model.dart';
-import 'package:ditonton/data/models/spoken_language_model.dart';
+import 'package:ditonton/domain/entities/production_country.dart';
+import 'package:ditonton/domain/entities/season.dart';
+import 'package:ditonton/domain/entities/spoken_language.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../data/models/created_by_model.dart';
-import '../../data/models/tv_series_detail_model.dart';
+import 'create_by.dart';
 import 'genre.dart';
 
 @immutable
@@ -43,7 +43,7 @@ class DetailTvSeries extends Equatable {
 
   final bool adult;
   final String? backdropPath;
-  final List<CreatedByModel> createdBy;
+  final List<CreatedBy> createdBy;
   final List<int>? episodeRunTime;
   final String firstAirDate;
   final List<Genre>? genres;
@@ -59,12 +59,12 @@ class DetailTvSeries extends Equatable {
   final List<String> originCountry;
   final String? originalLanguage;
   final String? originalName;
-  final String? overview;
+  final String overview;
   final double popularity;
   final String? posterPath;
-  final List<ProductionCountryModel> productionCountries;
+  final List<ProductionCountry> productionCountries;
   final List<Season>? seasons;
-  final List<SpokenLanguageModel> spokenLanguages;
+  final List<SpokenLanguage> spokenLanguages;
   final String? status;
   final String? tagline;
   final String? type;
